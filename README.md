@@ -41,3 +41,7 @@ Trabalho 2 da disciplina de fundamentos de sistemas inteligentes utilizando algo
 3. Executar o projeto
    ```shell
    python manage.py runserver
+   
+## SuperUsuario
+# nome: admin
+# senha: indulgencias2011
