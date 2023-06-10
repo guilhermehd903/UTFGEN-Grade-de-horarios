@@ -17,6 +17,7 @@ Trabalho 2 da disciplina de fundamentos de sistemas inteligentes utilizando algo
    cd utfgen
 
 3. Acesse o venv:
+   ```shell
    source venv/bin/activate ou ./Script/activate
 
 4. Acessar o projeto
