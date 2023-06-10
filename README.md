@@ -43,5 +43,5 @@ Trabalho 2 da disciplina de fundamentos de sistemas inteligentes utilizando algo
    python manage.py runserver
    
 ## SuperUsuario
-# nome: admin
-# senha: indulgencias2011
+### nome: admin
+### senha: indulgencias2011
