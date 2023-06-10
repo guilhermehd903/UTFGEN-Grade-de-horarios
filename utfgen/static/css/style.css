@@ -1,0 +1,464 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 1500px;
+    padding: 20px;
+    margin: auto;
+}
+
+.header {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .btnGenerate {
+    width: 150px;
+    height: 45px;
+    background-color: #89cd7a;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 280px auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+main aside {
+    padding: 30px;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
+main aside ul li {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+main aside ul li i {
+    font-size: 13px;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 5.5px;
+    background-color: #e7e7e7;
+}
+
+main aside ul a.active i {
+    background-color: #89cd7a;
+    color: #fff;
+}
+
+.grid {
+    overflow: hidden;
+}
+
+.grid .slider {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 400%;
+    height: 100%;
+    transition: transform 1s;
+}
+
+.grid header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.grid header .periodNav{
+    display: none;
+    column-gap: 10px;
+}
+
+.grid header .periodNav button{
+    background: #ccc;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+}
+
+.grid header .periodNav button.disabled{
+    opacity: 0.5;
+    cursor: initial;
+}
+
+
+.grid header h1 {
+    font-size: 18px;
+    color: #999999;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.grid header h1.title {
+    text-decoration: none;
+    color: #333;
+    cursor: initial;
+}
+
+.grid .content .period {
+    height: calc(100% - 60px);
+    display: none;
+    background-color: #e7e6e6;
+}
+
+.grid .content.formcontent {
+    display: block;
+    background-color: #fff !important;
+}
+
+.grid .content .collumn {
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
+.grid .content .collumn:last-of-type {
+    border-right: 0;
+}
+
+.grid .content .collumn .item {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    height: 130px;
+    padding: 10px;
+}
+
+.grid .content .collumn .item .time {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+}
+
+.grid .content .collumn .item .tag {
+    background-color: #89cd7a;
+    text-align: center;
+    font-size: 14px;
+}
+
+.grid .content .collumn .item .tag li {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 2px solid #fff;
+}
+
+.grid .content .datatable {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.grid .content .datatable thead,
+.grid .content .datatable tbody tr {
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.grid .content .datatable tbody tr:last-of-type {
+    border-bottom: 0;
+}
+
+.grid .content .datatable thead th {
+    border-bottom: 1px solid #ccc;
+}
+
+.grid .content .datatable tbody li.tag {
+    position: relative;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.grid .content .datatable tbody li.tag:first-of-type {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.grid .content .datatable tbody li.tag .subjectItem {
+    display: none;
+}
+
+.grid .content .datatable tbody li.tag:hover .subjectItem {
+    display: block;
+    position: absolute;
+    top: -55px;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    left: -100px;
+    height: 40px;
+    width: fit-content;
+    white-space: nowrap;
+    text-align: center;
+    color: #fff;
+}
+
+.grid .content .datatable tbody li.tag:hover .subjectItem::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    /* transform: translateX(-50%) rotate(30eg); */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #333;
+}
+
+.btnTable {
+    padding: 5px 10px;
+    background-color: #89cd7a;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.modal .modal-content {
+    animation: modalFade 0.8s;
+}
+
+.modal .modal-content {
+    width: 60%;
+    height: 90%;
+    max-height: 1000px;
+    max-width: 600px;
+    background-color: #fff;
+}
+
+.modal .modal-content .modal-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    line-height: initial;
+    overflow: hidden;
+    position: relative;
+}
+
+.modal .modal-content .modal-header .title {
+    margin-right: auto;
+}
+
+.modal .modal-content .modal-header .title h1 {
+    font-size: 25px;
+    color: #333;
+    text-decoration: none;
+}
+
+.modal .modal-content .modal-header .title p {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.modal .modal-content .modal-header .btnClose {
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+
+.modal .modal-content .modal-header .btnClose i {
+    font-size: 25px;
+    color: #818181;
+}
+
+.modal .modal-content .modal-body {
+    padding: 25px;
+    height: calc(100% - 160px);
+    overflow-y: auto;
+}
+
+.modal .modal-content .modal-body .input input,
+.modal .modal-content .modal-body .input select {
+    width: 125px;
+    height: 40px;
+}
+
+.modal .modal-content .modal-body table {
+    width: 100%;
+    border-spacing: 0;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+}
+
+.modal .modal-content .modal-body table tr th,
+.modal .modal-content .modal-body table tbody tr {
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal .modal-content .modal-body table tbody td button {
+    padding: 5px 10px;
+    border: 0;
+    color: #fff;
+    background-color: #e24a69;
+    cursor: pointer;
+}
+
+.modal .modal-content .modal-footer {
+    height: 80px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 10px;
+    padding-right: 25px;
+}
+
+.modal .modal-content .modal-footer button {
+    width: 100px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal .modal-content .modal-footer button.btnAddTime {
+    background-color: #89cd7a;
+    color: #fff;
+    border: 0;
+}
+
+.modal .modal-content .modal-footer button.btnAddTime:disabled {
+    cursor: initial;
+    opacity: 0.5;
+}
+
+/*Animation*/
+@keyframes modalFade {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/*loading*/
+#loading{
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+#loading p{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #888;
+}
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid #333;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    4.9% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    5% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}

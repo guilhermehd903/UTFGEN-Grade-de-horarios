@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>UTFGEN - Grade de horarios</h1>
+            {% if request.path == '/' %}
+                <button class="btnGenerate" id="btnGenerate" onclick="generateGrade()">Gerar</button>
+            {% endif %}
+        </header>
+        <main>
+            <aside>
+                <ul>
+                    <a href="{% url 'index' %}" {% if request.path == '/' %}class="active"{% endif %}><li><i class="fa-solid fa-calendar"></i> Grade</li></a>
+                    <a href="{% url 'disciplina' %}" {% if request.path == '/disciplina/' %}class="active"{% endif %}><li><i class="fa-solid fa-book"></i> Disciplinas</li></a>
+                    <a href="{% url 'professor' %}" {% if request.path == '/professor/' %}class="active"{% endif %}><li><i class="fa-solid fa-user-tie"></i> Professores</li></a>
+                </ul>
+            </aside>
+            <section class="grid">
+                {% block content %}
+                {% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/bd1634dc24.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/main.js' %}" crossorigin="anonymous"></script>
+
+</html>

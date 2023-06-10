@@ -1,0 +1,57 @@
+{% extends '../index.html' %}
+
+
+{% block content %}
+<header>
+    <h1 class="title">Lista de Disciplinas</h1>
+</header>
+<div class="content formcontent">
+    <table class="datatable">
+        <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Periodo</th>
+            <th>Professor</th>
+            <th>Ações</th>
+        </thead>
+        <tbody>
+            {% for disciplina in disciplinas %}
+                <tr>
+                    <td>{{disciplina.tag}}</td>
+                    <td>{{disciplina.nome}}</td>
+                    <td>{{disciplina.periodo}}</td>
+                    <td>{{disciplina.professor.nome}}</td>
+                    <td><button class="btnTable" data-role="subject" data-id={{disciplina.id}}>Ver mais</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="modal" id="SubjectModal">
+    <div class="modal-content">
+        <header class="modal-header">
+            <div class="title">
+                <h1>Editar detalhes</h1>
+                <p><b id="timeProfName"></b> Definição da heurística da disciplina.</p>
+            </div>
+            <button class="btnClose" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+        </header>
+        <div class="modal-body">
+            <div class="input">
+                {% csrf_token %}
+                <input type="hidden" id="idSubject"/>
+                <label>Carga horaria</label>
+                <input type="number" class="time-control" placeholder="Carga horaria" name="timeConsumed" min="30" max="90" step="15" style="width: 100%;margin-bottom: 15px;"/>
+                <label>Dificuldade</label>
+                <input type="number" class="time-control" placeholder="Dificuldade" name="difficulty" min="0" style="width: 100%;margin-bottom: 15px;"/>
+                <label>Requisito</label>
+                <select id="requirementList" style="width: 100%;"></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btnAddTime" id="btnAddTime" data-role="subject">Editar</button>
+            <button>Fechar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

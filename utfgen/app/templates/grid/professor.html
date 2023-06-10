@@ -1,0 +1,74 @@
+{% extends '../index.html' %}
+
+
+{% block content %}
+<header>
+    <h1 class="title">Lista de professores</h1>
+</header>
+<div class="content formcontent">
+    <table class="datatable">
+        <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Disciplinas</th>
+            <th>Ações</th>
+        </thead>
+        <tbody>
+            {% for professor in professores %}
+            <tr>
+                <td>{{professor.id}}</td>
+                <td>{{professor.nome}}</td>
+                <td>{{professor.email}}</td>
+                <td>
+                    {% for disciplina in professor.disciplina_set.all %}
+                    <li class="tag">{{ disciplina.tag }} <span class="subjectItem">{{disciplina.nome}}</span></li>
+                    {% endfor %}
+                </td>
+                <td><button class="btnTable" data-role="prof" data-id={{professor.id}}>Ver mais</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="modal" id="timeAvaliableModal">
+    <div class="modal-content">
+        <header class="modal-header">
+            <div class="title">
+                <h1>Adicionar Horario</h1>
+                <p><b id="timeProfName"></b> Adicionar horario disponivel.</p>
+            </div>
+            <button class="btnClose" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+        </header>
+        <div class="modal-body">
+            <div class="input">
+                {% csrf_token %}
+                <input type="hidden" id="idProd"/>
+                <input type="number" class="time-control" name="day" min="1" max="5"/>
+                &nbsp;
+                <input type="time" class="time-control" name="from"/>
+                &nbsp;
+                <input type="time" class="time-control" name="to"/>
+            </div>
+            <table>
+                <tr>
+                    <th>Dia</th>
+                    <th>Horario(de)</th>
+                    <th>Horario(até)</th>
+                    <th>Excluir</th>
+                </tr>
+                <tbody id="timeAvaliableTable">
+                    <tr class="notFound">
+                        <td colspan="4">Carregando...</td>
+                    <tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btnAddTime" id="btnAddTime" data-role="prof">Adicionar</button>
+            <button>Fechar</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
